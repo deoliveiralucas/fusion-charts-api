@@ -1,0 +1,6 @@
+example/public/js/*.js
+.idea
+.settings
+.buildpath
+.project
+vendor

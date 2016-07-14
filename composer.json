@@ -1,0 +1,21 @@
+{
+    "name": "deoliveiralucas/fusion-charts-api",
+    "description": "This package can generate graphical charts using the FusionCharts API",
+    "license": "GNU General Public License Versions",
+    "authors": [
+	{
+	    "name": "Lucas de Oliveira",
+	    "email": "contato@deoliveiralucas.net"
+	}
+    ],
+    "keywords": ["fusion", "charts", "api"],
+    "type": "library",
+    "require": {
+	"php": ">=5.3.6"
+    },
+    "autoload": {
+        "psr-0": {
+            "FusionCharts_": "library/"
+        }
+    }
+}
