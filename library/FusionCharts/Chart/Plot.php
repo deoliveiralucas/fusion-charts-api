@@ -1,5 +1,12 @@
 <?php
 
+namespace FusionCharts\Chart;
+
+use FusionCharts\Tag\Categories;
+use FusionCharts\Tag\DataSet;
+use FusionCharts\Tag\VTrendLines;
+use FusionCharts\Tag\TrendLines;
+
 /**
  * Class to create plot chart
  *
@@ -8,7 +15,7 @@
  * @author Lucas de Oliveira
  * @copyright 2014 - 2015 Lucas de Oliveira
  */
-class FusionCharts_Chart_Plot extends FusionCharts_Chart_Abstract
+class Plot extends AbstractChart
 {
 
     /**
@@ -53,7 +60,7 @@ class FusionCharts_Chart_Plot extends FusionCharts_Chart_Abstract
 
     /**
      * @param string $xDesc
-     * @return FusionCharts_Chart_Plot
+     * @return Plot
      */
     public function setXdescription($xDesc)
     {
@@ -63,7 +70,7 @@ class FusionCharts_Chart_Plot extends FusionCharts_Chart_Abstract
 
     /**
      * @param string $yDesc
-     * @return FusionCharts_Chart_Plot
+     * @return Plot
      */
     public function setYdescription($yDesc)
     {
@@ -72,40 +79,40 @@ class FusionCharts_Chart_Plot extends FusionCharts_Chart_Abstract
     }
 
     /**
-     * @param FusionCharts_Tag_Categories $categories
-     * @return FusionCharts_Chart_Plot
+     * @param Categories $categories
+     * @return Plot
      */
-    public function addCategories(FusionCharts_Tag_Categories $categories)
+    public function addCategories(Categories $categories)
     {
         $this->categories[] = $categories->getXML();
         return $this;
     }
 
     /**
-     * @param FusionCharts_Tag_DataSet $dataSet
-     * @return FusionCharts_Chart_Plot
+     * @param DataSet $dataSet
+     * @return Plot
      */
-    public function addPlots(FusionCharts_Tag_DataSet $dataSet)
+    public function addPlots(DataSet $dataSet)
     {
         $this->plots[] = $dataSet->getXML();
         return $this;
     }
 
     /**
-     * @param FusionCharts_Tag_VTrendLines $vTrendLines
-     * @return FusionCharts_Chart_Plot
+     * @param VTrendLines $vTrendLines
+     * @return Plot
      */
-    public function addVTrendLines(FusionCharts_Tag_VTrendLines $vTrendLines)
+    public function addVTrendLines(VTrendLines $vTrendLines)
     {
         $this->vTrendlines[] = $vTrendLines->getXML();
         return $this;
     }
 
     /**
-     * @param FusionCharts_Tag_TrendLines $trendLines
-     * @return FusionCharts_Chart_Plot
+     * @param TrendLines $trendLines
+     * @return Plot
      */
-    public function addTrendLines(FusionCharts_Tag_TrendLines $trendLines)
+    public function addTrendLines(TrendLines $trendLines)
     {
         $this->trendLines[] = $trendLines->getXML();
         return $this;
@@ -113,7 +120,7 @@ class FusionCharts_Chart_Plot extends FusionCharts_Chart_Abstract
 
     /**
      * @param boolean $rotate
-     * @return FusionCharts_Chart_Plot
+     * @return Plot
      */
     public function setLabelRotate($rotate = true)
     {
@@ -125,7 +132,7 @@ class FusionCharts_Chart_Plot extends FusionCharts_Chart_Abstract
     }
 
     /**
-     * @see FusionCharts_Chart_Abstract::startDefaultAttributes()
+     * @see AbstractChart::startDefaultAttributes()
      */
     protected function startDefaultAttributes()
     {
@@ -140,7 +147,7 @@ class FusionCharts_Chart_Plot extends FusionCharts_Chart_Abstract
     }
 
     /**
-     * @see FusionChartAbstract::getXML()
+     * @see AbstractChart::getXML()
      */
     public function getXML()
     {

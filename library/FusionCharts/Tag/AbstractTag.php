@@ -1,13 +1,16 @@
 <?php
 
+namespace FusionCharts\Tag;
+
 /**
  * Abstract class to create tag
+ *
  * @version 3.0
  * @package Tag
  * @author Lucas de Oliveira
  * @copyright 2014 - 2015 Lucas de Oliveira
  */
-abstract class FusionCharts_Tag_Abstract
+abstract class AbstractTag
 {
     /**
      * @var array
@@ -17,7 +20,7 @@ abstract class FusionCharts_Tag_Abstract
     /**
      * @param string $name
      * @param number $value
-     * @return FusionCharts_Tag_Abstract
+     * @return AbstractTag
      */
     public function setAttribute($name, $value)
     {
@@ -40,7 +43,7 @@ abstract class FusionCharts_Tag_Abstract
 
     /**
      * Return the component XML
-     * 
+     *
      * @return string
      */
     abstract public function getXML();

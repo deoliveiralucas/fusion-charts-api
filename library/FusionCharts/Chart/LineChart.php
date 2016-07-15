@@ -1,5 +1,11 @@
 <?php
 
+namespace FusionCharts\Chart;
+
+use FusionCharts\Tag\Categories;
+use FusionCharts\Tag\DataSet;
+use FusionCharts\Tag\TrendLines;
+
 /**
  * Class to create line chart
  *
@@ -8,7 +14,7 @@
  * @author Lucas de Oliveira
  * @copyright 2014 - 2015 Lucas de Oliveira
  */
-class FusionCharts_Chart_Line extends FusionCharts_Chart_Abstract
+class LineChart extends AbstractChart
 {
 
     /**
@@ -32,30 +38,30 @@ class FusionCharts_Chart_Line extends FusionCharts_Chart_Abstract
     protected $trendLines = array();
 
     /**
-     * @param FusionCharts_Tag_Categories $categories
-     * @return FusionCharts_Chart_Line
+     * @param Categories $categories
+     * @return Line
      */
-    public function addCategories(FusionCharts_Tag_Categories $categories)
+    public function addCategories(Categories $categories)
     {
         $this->categories[] = $categories->getXML();
         return $this;
     }
 
     /**
-     * @param FusionCharts_Tag_DataSet $dataSet
-     * @return FusionCharts_Chart_Line
+     * @param DataSet $dataSet
+     * @return Line
      */
-    public function addLine(FusionCharts_Tag_DataSet $dataSet)
+    public function addLine(DataSet $dataSet)
     {
         $this->lines[] = $dataSet->getXML();
         return $this;
     }
 
     /**
-     * @param FusionCharts_Tag_TrendLines $trendLines
-     * @return FusionCharts_Chart_Line
+     * @param TrendLines $trendLines
+     * @return Line
      */
-    public function addTrendLines(FusionCharts_Tag_TrendLines $trendLines)
+    public function addTrendLines(TrendLines $trendLines)
     {
         $this->trendLines[] = $trendLines->getXML();
         return $this;
@@ -63,7 +69,7 @@ class FusionCharts_Chart_Line extends FusionCharts_Chart_Abstract
 
     /**
      * @param boolean $rotate
-     * @return FusionCharts_Chart_Line
+     * @return Line
      */
     public function setLabelRotate($rotate = true)
     {
@@ -75,7 +81,7 @@ class FusionCharts_Chart_Line extends FusionCharts_Chart_Abstract
     }
 
     /**
-     * @see FusionCharts_Chart_Abstract::startDefaultAttributes()
+     * @see AbstractChart::startDefaultAttributes()
      */
     protected function startDefaultAttributes()
     {
@@ -83,7 +89,7 @@ class FusionCharts_Chart_Line extends FusionCharts_Chart_Abstract
     }
 
     /**
-     * @see FusionCharts_Chart_Abstract::getXML()
+     * @see AbstractChart::getXML()
      */
     public function getXML()
     {

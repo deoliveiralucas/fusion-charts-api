@@ -1,31 +1,36 @@
 <?php
 
+use FusionCharts\Chart\LineChart;
+use FusionCharts\Tag\Categories;
+use FusionCharts\Tag\Category;
+use FusionCharts\Tag\DataSet;
+use FusionCharts\Tag\Set;
+use FusionCharts\Tag\Line;
+use FusionCharts\Tag\TrendLines;
+
 // Data from db
 $months = array('Jan', 'Feb', 'Mar', 'Apr');
 $valLine1 = array(100, 200, 150, 210);
 $valLine2 = array(50, 300, 90, 400);
 
-$chart = new FusionCharts_Chart_Line('chart-container');
+$chart = new LineChart('chart-container');
 
-$categories = new FusionCharts_Tag_Categories();
+$categories = new Categories();
 foreach ($months as $month) {
-    $category = new FusionCharts_Tag_Category($month);
-    $categories->addCategory($category);
+    $categories->addCategory(new Category($month));
 }
 
-$line1 = new FusionCharts_Tag_DataSet();
+$line1 = new DataSet();
 foreach ($valLine1 as $value) {
-    $line = new FusionCharts_Tag_Set($value);
-    $line1->addSet($line);
+    $line1->addSet(new Set($value));
 }
 
-$line2 = new FusionCharts_Tag_DataSet();
+$line2 = new DataSet();
 foreach ($valLine2 as $value) {
-    $line = new FusionCharts_Tag_Set($value);
-    $line2->addSet($line);
+    $line2->addSet(new Set($value));
 }
 
-$trendLine1 = new FusionCharts_Tag_Line();
+$trendLine1 = new Line();
 $trendLine1
     ->setValue(250)
     ->setColor('FF0000')
@@ -37,7 +42,7 @@ $trendLine2
     ->setValue(390)
     ->setDisplayValue('Trendline2 Example: 390');
 
-$trendLines = new FusionCharts_Tag_TrendLines();
+$trendLines = new TrendLines();
 $trendLines
     ->addLine($trendLine1)
     ->addLine($trendLine2);

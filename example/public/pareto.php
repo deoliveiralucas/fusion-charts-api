@@ -1,5 +1,8 @@
 <?php
 
+use FusionCharts\Chart\Pareto;
+use FusionCharts\Tag\Set;
+
 // Data from db
 $values = array(
     'Jan' => 100,
@@ -8,7 +11,7 @@ $values = array(
     'Apr' => 210
 );
 
-$chart = new FusionCharts_Chart_Pareto('chart-container');
+$chart = new Pareto('chart-container');
 
 $chart
     ->setName('Chart Pareto Example')
@@ -19,7 +22,7 @@ $chart
     ->setYdescription('y values')
     ->setAttribute('showyaxisvalues', '0');
 
-$column = new FusionCharts_Tag_Set();
+$column = new Set();
 foreach ($values as $description => $value) {
     $column
         ->setAttribute('label', $description)

@@ -1,12 +1,14 @@
 <?php
 
+namespace FusionCharts\Tag;
+
 /**
  * @package Tag
  * @version 3.0
  * @author Lucas de Oliveira
  * @copyright 2014 - 2015 Lucas de Oliveira
  */
-class FusionCharts_Tag_Category extends FusionCharts_Tag_Abstract
+class Category extends AbstractTag
 {
     /**
      * @param string $label
@@ -19,11 +21,10 @@ class FusionCharts_Tag_Category extends FusionCharts_Tag_Abstract
     }
 
     /**
-     * (non-PHPdoc)
-     * @see FusionCharts_Tag_Abstract::getXML()
+     * @see AbstractTag::getXML()
      */
     public function getXML()
     {
-        return '<category ' . $this->getXMLAttributes() . ' />';
+        return sprintf('<category %s />', $this->getXMLAttributes());
     }
 }

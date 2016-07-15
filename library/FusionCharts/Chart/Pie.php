@@ -1,5 +1,9 @@
 <?php
 
+namespace FusionCharts\Chart;
+
+use FusionCharts\Tag\Set;
+
 /**
  * Class to create pie chart
  *
@@ -8,7 +12,7 @@
  * @author Lucas de Oliveira
  * @copyright 2014 - 2015 Lucas de Oliveira
  */
-class FusionCharts_Chart_Pie extends FusionCharts_Chart_Abstract
+class Pie extends AbstractChart
 {
 
     /**
@@ -22,17 +26,17 @@ class FusionCharts_Chart_Pie extends FusionCharts_Chart_Abstract
     protected $slices = array();
 
     /**
-     * @param FusionCharts_Tag_Set $set
-     * @return FusionCharts_Chart_Pie
+     * @param Set $set
+     * @return Pie
      */
-    public function addSlice(FusionCharts_Tag_Set $set)
+    public function addSlice(Set $set)
     {
         $this->slices[] = $set->getXML();
         return $this;
     }
 
     /**
-     * @see FusionCharts_Chart_Abstract::startDefaultAttributes()
+     * @see AbstractChart::startDefaultAttributes()
      */
     protected function startDefaultAttributes()
     {
@@ -42,13 +46,17 @@ class FusionCharts_Chart_Pie extends FusionCharts_Chart_Abstract
     }
 
     /**
-     * @see FusionChartAbstract::getXML()
+     * @see AbstractChart::getXML()
      */
     public function getXML()
     {
         $this->startDefaultAttributes();
-        
-        $xmlChart = "<chart " . $this->getAsXMLAttributes($this->attribute) . " >" . implode(' ', $this->slices) . "</chart>";
+
+        $xmlChart = sprintf(
+            '<chart %s >%s</chart>',
+            $this->getAsXMLAttributes($this->attribute),
+            implode(' ', $this->slices)
+        );
 
         return $xmlChart;
     }

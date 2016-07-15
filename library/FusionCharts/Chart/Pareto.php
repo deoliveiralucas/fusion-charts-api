@@ -1,5 +1,9 @@
 <?php
 
+namespace FusionCharts\Chart;
+
+use FusionCharts\Tag\Set;
+
 /**
  * Class to create pareto chart
  *
@@ -8,7 +12,7 @@
  * @author Lucas de Oliveira
  * @copyright 2014 - 2015 Lucas de Oliveira
  */
-class FusionCharts_Chart_Pareto extends FusionCharts_Chart_Abstract
+class Pareto extends AbstractChart
 {
 
     /**
@@ -33,7 +37,7 @@ class FusionCharts_Chart_Pareto extends FusionCharts_Chart_Abstract
 
     /**
      * @param string $xDesc
-     * @return FusionCharts_Chart_Pareto
+     * @return Pareto
      */
     public function setXdescription($xDesc)
     {
@@ -43,7 +47,7 @@ class FusionCharts_Chart_Pareto extends FusionCharts_Chart_Abstract
 
     /**
      * @param string $yDesc
-     * @return FusionCharts_Chart_Pareto
+     * @return Pareto
      */
     public function setYdescription($yDesc)
     {
@@ -52,10 +56,10 @@ class FusionCharts_Chart_Pareto extends FusionCharts_Chart_Abstract
     }
 
     /**
-     * @param FusionCharts_Tag_Set $set
-     * @return FusionCharts_Chart_Pareto
+     * @param Set $set
+     * @return Pareto
      */
-    public function addColumn(FusionCharts_Tag_Set $set)
+    public function addColumn(Set $set)
     {
         $this->sets[] = $set->getXML();
         return $this;
@@ -63,7 +67,7 @@ class FusionCharts_Chart_Pareto extends FusionCharts_Chart_Abstract
 
     /**
      * @param boolean $rotate
-     * @return FusionCharts_Chart_Pareto
+     * @return Pareto
      */
     public function setLabelRotate($rotate = true)
     {
@@ -75,7 +79,7 @@ class FusionCharts_Chart_Pareto extends FusionCharts_Chart_Abstract
     }
 
     /**
-     * @see FusionCharts_Chart_Abstract::startDefaultAttributes()
+     * @see AbstractChart::startDefaultAttributes()
      */
     protected function startDefaultAttributes()
     {
@@ -87,13 +91,17 @@ class FusionCharts_Chart_Pareto extends FusionCharts_Chart_Abstract
     }
 
     /**
-     * @see FusionChartAbstract::getXML()
+     * @see AbstractChart::getXML()
      */
     public function getXML()
     {
         $this->startDefaultAttributes();
-        
-        $xmlChart  = "<chart " . $this->getAsXMLAttributes($this->attribute) . " > " . implode(' ', $this->sets) .  " </chart>";
+
+        $xmlChart = sprintf(
+            '<chart %s >%s</chart>',
+            $this->getAsXMLAttributes($this->attribute),
+            implode(' ', $this->sets)
+        );
 
         return $xmlChart;
     }

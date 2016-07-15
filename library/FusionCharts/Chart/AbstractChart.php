@@ -1,5 +1,9 @@
 <?php
 
+namespace FusionCharts\Chart;
+
+use InvalidArgumentException as ArgumentException;
+
 /**
  * Abstract class to create fusionchart classes
  *
@@ -8,7 +12,7 @@
  * @author Lucas de Oliveira
  * @copyright 2014 - 2015 Lucas de Oliveira
  */
-abstract class FusionCharts_Chart_Abstract
+abstract class AbstractChart
 {
 
     /**
@@ -52,7 +56,7 @@ abstract class FusionCharts_Chart_Abstract
     public function __construct($idElement)
     {
         if (is_null($idElement)) {
-            throw new InvalidArgumentException(
+            throw new ArgumentException(
                 'You must set the id of the element in the constructor to render the chart'
             );
         }
@@ -62,7 +66,7 @@ abstract class FusionCharts_Chart_Abstract
 
     /**
      * @param string $name
-     * @return FusionCharts_Chart_Abstract
+     * @return AbstractChart
      */
     public function setName($name)
     {
@@ -72,7 +76,7 @@ abstract class FusionCharts_Chart_Abstract
 
     /**
      * @param integer $width
-     * @return FusionCharts_Chart_Abstract
+     * @return AbstractChart
      */
     public function setWidth($width)
     {
@@ -82,7 +86,7 @@ abstract class FusionCharts_Chart_Abstract
 
     /**
      * @param integer $height
-     * @return FusionCharts_Chart_Abstract
+     * @return AbstractChart
      */
     public function setHeight($height)
     {
@@ -93,7 +97,7 @@ abstract class FusionCharts_Chart_Abstract
     /**
      * @param string $name
      * @param string $value
-     * @return FusionCharts_Chart_Abstract
+     * @return AbstractChart
      */
     public function setAttribute($name, $value)
     {
@@ -141,7 +145,7 @@ abstract class FusionCharts_Chart_Abstract
 
     /**
      * Return the XML to render the chart
-     * 
+     *
      * @return string xml
      */
     abstract public function getXML();

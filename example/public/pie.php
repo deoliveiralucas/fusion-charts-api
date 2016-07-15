@@ -1,5 +1,8 @@
 <?php
 
+use FusionCharts\Chart\Pie;
+use FusionCharts\Tag\Set;
+
 // Data from db
 $values = array(
     'Jan' => 100,
@@ -8,7 +11,7 @@ $values = array(
     'Apr' => 210
 );
 
-$chart = new FusionCharts_Chart_Pie('chart-container');
+$chart = new Pie('chart-container');
 
 $chart
     ->setName('Chart Pie Example')
@@ -17,7 +20,7 @@ $chart
     ->setAttribute('showlegend', '1')
     ->setAttribute('showlabels', '0');
 
-$slice = new FusionCharts_Tag_Set();
+$slice = new Set();
 foreach ($values as $name => $value){
     $slice
         ->setAttribute('issliced', '1')

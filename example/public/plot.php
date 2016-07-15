@@ -1,15 +1,21 @@
 <?php
 
+use FusionCharts\Chart\Plot;
+use FusionCharts\Tag\Categories;
+use FusionCharts\Tag\Category;
+use FusionCharts\Tag\DataSet;
+use FusionCharts\Tag\Set;
+
 // Data from db
 $months = array('Jan', 'Feb', 'Mar', 'Apr');
 $xValues = array(100, 200, 300, 400);
 $yValues = array(150, 120, 200, 220);
 
-$chart = new FusionCharts_Chart_Plot('chart-container');
+$chart = new Plot('chart-container');
 
-$categories = new FusionCharts_Tag_Categories();
+$categories = new Categories();
 foreach ($months as $index => $month) {
-    $category = new FusionCharts_Tag_Category();
+    $category = new Category();
     $category
         ->setAttribute('label', $month)
         ->setAttribute('x', $xValues[$index])
@@ -18,7 +24,7 @@ foreach ($months as $index => $month) {
     $categories->addCategory($category);
 }
 
-$plots = new FusionCharts_Tag_DataSet();
+$plots = new DataSet();
 $plots
     ->setAttribute('color', '000080')
     ->setAttribute('anchorbgcolor', '000080')
@@ -26,7 +32,7 @@ $plots
     ->setAttribute('anchorsides', '4');
 
 foreach ($yValues as $index => $value) {
-    $plot = new FusionCharts_Tag_Set();
+    $plot = new Set();
     $plot
         ->setAttribute('y', $value)
         ->setAttribute('x', $xValues[$index]);

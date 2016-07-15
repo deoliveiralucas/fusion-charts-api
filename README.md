@@ -30,21 +30,27 @@ composer require deoliveiralucas/fusion-charts-api
 
 - Columns
 ``` php
+use FusionCharts\Chart\ColumnLine;
+use FusionCharts\Tag\Categories;
+use FusionCharts\Tag\Category;
+use FusionCharts\Tag\DataSet as Columns;
+use FusionCharts\Tag\Set as Column;
+
 // Data from db
 $months = array('Jan', 'Feb', 'Mar', 'Apr');
 $values = array(100, 200, 150, 210);
 
-$chart = new FusionCharts_Chart_ColumnLine('chart-container');
+$chart = new ColumnLine('chart-container');
 
-$categories = new FusionCharts_Tag_Categories();
+$categories = new Categories();
 foreach ($months as $month) {
-    $category = new FusionCharts_Tag_Category($month);
+    $category = new Category($month);
     $categories->addCategory($category);
 }
 
-$columns = new FusionCharts_Tag_DataSet();
+$columns = new Columns();
 foreach ($values as $value) {
-    $column = new FusionCharts_Tag_Set($value);
+    $column = new Column($value);
     $columns->addSet($column);
 }
 

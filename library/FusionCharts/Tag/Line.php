@@ -1,12 +1,16 @@
 <?php
 
+namespace FusionCharts\Tag;
+
+use InvalidArgumentException as ArgumentException;
+
 /**
  * @package Tag
  * @version 3.0
  * @author Lucas de Oliveira
  * @copyright 2014 - 2015 Lucas de Oliveira
  */
-class FusionCharts_Tag_Line extends FusionCharts_Tag_Abstract
+class Line extends AbstractTag
 {
     /**
      * @param number $value
@@ -20,7 +24,7 @@ class FusionCharts_Tag_Line extends FusionCharts_Tag_Abstract
 
     /**
      * @param string $color
-     * @return FusionCharts_Tag_Line
+     * @return Line
      */
     public function setColor($color)
     {
@@ -30,7 +34,7 @@ class FusionCharts_Tag_Line extends FusionCharts_Tag_Abstract
 
     /**
      * @param string $displayValue
-     * @return FusionCharts_Tag_Line
+     * @return Line
      */
     public function setDisplayValue($displayValue)
     {
@@ -39,14 +43,14 @@ class FusionCharts_Tag_Line extends FusionCharts_Tag_Abstract
     }
 
     /**
-     * @param number $value
-     * @throws InvalidArgumentException
-     * @return FusionCharts_Tag_Line
+     * @param int|float $value
+     * @throws ArgumentException
+     * @return Line
      */
     public function setValue($value)
     {
         if (! is_numeric($value)) {
-            throw new InvalidArgumentException(sprintf("Value %s must be numeric", $value));
+            throw new ArgumentException(sprintf("Value %s must be numeric", $value));
         }
 
         $this->setAttribute('startvalue', $value);
@@ -55,7 +59,8 @@ class FusionCharts_Tag_Line extends FusionCharts_Tag_Abstract
 
     /**
      * It doesn't work for column charts
-     * @return FusionCharts_Tag_Line
+     *
+     * @return Line
      */
     public function setValueOnRight()
     {
@@ -64,11 +69,10 @@ class FusionCharts_Tag_Line extends FusionCharts_Tag_Abstract
     }
 
     /**
-     * (non-PHPdoc)
-     * @see FusionCharts_Tag_Abstract::getXML()
+     * @see AbstractTag::getXML()
      */
     public function getXML()
     {
-        return '<line ' . $this->getXMLAttributes() . ' />';
+        return sprintf('<line %s />', $this->getXMLAttributes());
     }
 }

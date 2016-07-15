@@ -1,15 +1,17 @@
 <?php
 
+namespace FusionCharts\Tag;
+
 /**
  * @package Tag
  * @version 3.0
  * @author Lucas de Oliveira
  * @copyright 2014 - 2015 Lucas de Oliveira
  */
-class FusionCharts_Tag_Set extends FusionCharts_Tag_Abstract
+class Set extends AbstractTag
 {
     /**
-     * @param number $value
+     * @param int|float $value
      */
     public function __construct($value = null)
     {
@@ -19,11 +21,10 @@ class FusionCharts_Tag_Set extends FusionCharts_Tag_Abstract
     }
 
     /**
-     * (non-PHPdoc)
-     * @see FusionCharts_Tag_Abstract::getXML()
+     * @see AbstractTag::getXML()
      */
     public function getXML()
     {
-        return '<set ' . $this->getXMLAttributes() . ' />';
+        return sprintf('<set %s />', $this->getXMLAttributes());
     }
 }
