@@ -1,6 +1,6 @@
 # FusionCharts - API #
 __http://www.fusioncharts.com/__
-##[PHPClasses](http://www.phpclasses.org/package/9002-PHP-Generate-graphical-charts-using-FusionCharts-API.html)##
+## [PHPClasses](http://www.phpclasses.org/package/9002-PHP-Generate-graphical-charts-using-FusionCharts-API.html)
 
 ## Description ##
 This package can provide the data to generate graphical charts using the FusionCharts Library.
